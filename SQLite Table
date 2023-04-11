@@ -1,0 +1,45 @@
+-- Create power_data table
+CREATE TABLE IF NOT EXISTS power_data (
+    id INTEGER PRIMARY KEY,
+    household_id INTEGER,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,
+    energy_consumed REAL,
+    energy_produced REAL,
+    FOREIGN KEY (household_id) REFERENCES households (id)
+);
+
+-- Create electricity_prices table
+CREATE TABLE IF NOT EXISTS electricity_prices (
+    id INTEGER PRIMARY KEY,
+    start_date DATE NOT NULL,
+    end_date DATE NOT NULL,
+    price_per_kwh REAL NOT NULL
+);
+
+-- Create green_energy_sources table
+CREATE TABLE IF NOT EXISTS green_energy_sources (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    energy_type TEXT NOT NULL,
+    carbon_intensity REAL NOT NULL
+);
+
+-- Create household_green_energy_sources table
+CREATE TABLE IF NOT EXISTS household_green_energy_sources (
+    id INTEGER PRIMARY KEY,
+    household_id INTEGER NOT NULL,
+    green_energy_source_id INTEGER NOT NULL,
+    percentage REAL NOT NULL,
+    FOREIGN KEY (household_id) REFERENCES households (id),
+    FOREIGN KEY (green_energy_source_id) REFERENCES green_energy_sources (id)
+);
+
+-- Create household_charging_boxes table
+CREATE TABLE IF NOT EXISTS household_charging_boxes (
+    id INTEGER PRIMARY KEY,
+    household_id INTEGER NOT NULL,
+    name TEXT NOT NULL,
+    power_rating REAL NOT NULL,
+    FOREIGN KEY (household_id) REFERENCES households (id)
+);
+
