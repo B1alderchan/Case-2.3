@@ -1,0 +1,22 @@
+[
+    {
+        "household_id": 1,
+        "energy_consumed": 1.5,
+        "energy_produced": 0.5
+    },
+    {
+        "household_id": 2,
+        "energy_consumed": 2.8,
+        "energy_produced": 1.9
+    },
+    {
+        "household_id": 3,
+        "energy_consumed": 4.2,
+        "energy_produced": 2.6
+    },
+    {
+        "household_id": 4,
+        "energy_consumed": 0.9,
+        "energy_produced": 1.2
+    }
+]
